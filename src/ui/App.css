@@ -1,0 +1,207 @@
+@font-face {
+    font-family: 'Cinzel';
+    src: url(./fonts/Cinzel/Cinzel-VariableFont_wght.ttf);
+}
+
+#mainpage{
+    width: 100%;
+    overflow-x: hidden;
+}
+
+#page1{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#image-1{
+    height: 100%;
+    width: 100%;
+    background: url(./images/taaj.png);
+    background-size: cover;
+    background-position: center ;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+
+
+#circle{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: black;
+}
+
+
+
+
+
+
+/* ------------------------page2------------------------------------------------ */
+
+
+
+#page2{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#image-2{
+    height: 100vh;
+    width: 100vw;
+    background: url(./images/2nd.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#components{
+    height: 93vh;
+    width: 100%;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 450px;
+}
+#comp{
+    /* margin-top: 300px; */
+    height: 30vh;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: end;
+    align-items: start;
+}
+
+#arrow{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: black;
+    margin-bottom: 150px;
+}
+
+#qr-code{
+    width: 400px;
+    height: 400px;
+    background-color: black;
+    margin-left: 20px;
+}
+
+#chat-bot{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: black;
+    margin-right: 25px;
+    margin-top: 20px;
+}
+
+/* ------------------------page3------------------------------------------------ */
+
+
+#page3{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#image-3{
+    height: 100%;
+    width: 100%;
+    background: url(./images/3rd.png);
+    background-size: cover;
+    background-position: center;
+}
+#navbar{
+    height: 12vh;
+    width: 100vw;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+    margin-top: 3px;
+}
+#navbar button{
+    text-align: center;
+    height: 68px;
+    width: 11vw;
+    border: none;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 27px;
+    background-color:#00204D;
+    color: #E8E1CA;
+    font-family: 'Cinzel';
+    /* padding: 2px 3px; */
+}
+
+#navbar button:hover{
+    background-color: #54667A;
+}
+#middle{
+    height: 10vh;
+    width: 100vw;
+    /* background-color: red; */
+    margin-top: 38vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.arrow-3{
+    height: 10vh;
+    width: 10vh;
+    background-color: black;
+}
+
+#down-3{
+    height: 19vh;
+    width: 100vw;
+    /* background-color: #00204D; */
+    margin-top: 157px;
+}
+#left-3{
+    height: 19vh;
+    width: 70%;
+    /* background-color: yellow; */
+}
+#right-3{
+    height: 19vh;
+    width: 30%;
+    background-color: green;
+}
+#left-3 h1{
+    font-size: 30px;
+    margin-left: 3px;
+    margin-top: 10px;
+}
+#left-3 p{
+    margin-left: 3px;
+}
+#chatbot-3{
+    height: 130px;
+    width: 130px;
+    background-color: red;
+}
+
+/* ----------------------PAGE4------------------------------------ */
+
+
+/* #page4{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: red;
+} */
