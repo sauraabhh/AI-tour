@@ -1,7 +1,7 @@
 import React from "react";
 import NavMain from "../Component/NavMain";
 import { useNavigate } from "react-router";
-import ChatBot from "../Component/ChatBot";
+import ToggleChatbotButton from "../Component/ToggleChatbotButton";
 
 const Booking = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Booking = () => {
        <button onClick={() => navigate("/help")}>Next</button>
 
     </div>
-    <ChatBot/>
+    <ToggleChatbotButton/>
     </div>
 
   );

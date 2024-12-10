@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import NavMain from "../Component/NavMain";
-import ChatBot from "../Component/ChatBot";
+import ToggleChatbotButton from "../Component/ToggleChatbotButton";
 
 const PlanTrip = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const PlanTrip = () => {
       <button onClick={() => navigate("/explore-city")}>Prev</button>
       <button onClick={() => navigate("/booking")}>Next</button>
     </div>
-     <ChatBot/>
+    <ToggleChatbotButton/>
     </div>
   );
 };

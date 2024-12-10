@@ -1,10 +1,10 @@
 import React from 'react'
-import Map from '../pages/Map'
+import MapButton from './MapButton'
 
 function ExploreNearby() {
   return (
     <div>Explore Near by
-        <Map/>
+        <MapButton/>
     </div>
     
   )

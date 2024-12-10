@@ -1,6 +1,7 @@
 import React from "react";
 import NavMain from "../Component/NavMain";
 import { useNavigate } from "react-router";
+import ToggleChatbotButton from "../Component/ToggleChatbotButton";
 
 
 const Help = () => {
@@ -14,7 +15,7 @@ const Help = () => {
       <button onClick={() => navigate("/language")}>Next</button>
     </div>
     
-    
+    <ToggleChatbotButton/>
     </div>
   );
 };

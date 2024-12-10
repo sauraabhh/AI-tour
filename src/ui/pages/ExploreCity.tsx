@@ -6,7 +6,7 @@ import ExploreNearby from '../Component/ExploreNearby';
 import Adventures from '../Component/Adventures';
 import NavMain from '../Component/NavMain';
 import { useNavigate } from 'react-router';
-import ChatBot from '../Component/ChatBot';
+import ToggleChatbotButton from '../Component/ToggleChatbotButton';
 
 function ExploreCity() {
     const [currentPage, setCurrentPage] = useState<string>('page1');
@@ -38,7 +38,7 @@ function ExploreCity() {
             <button onClick={() => navigate("/")}>Prev</button>
             <button onClick={() => navigate("/plan-trip")}>Next</button>
         </div>
-        <ChatBot/>
+        <ToggleChatbotButton/>
         </div>  
     );
 }
