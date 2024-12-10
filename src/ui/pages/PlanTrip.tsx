@@ -7,6 +7,7 @@ const PlanTrip = () => {
     <div style={{ textAlign: "center", marginTop: "50px" }}>
       <h1>Plan Your Trip</h1>
       <button onClick={() => navigate("/")}>Prev</button>
+      <button onClick={() => navigate("/booking")}>Next</button>
     </div>
   );
 };

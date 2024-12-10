@@ -14,9 +14,9 @@ const Start = () => {
           className="h-full w-full object-cover"
         />
         <div
-          className="w-24 h-24 rounded-full mr-5 mb-5 bg-black cursor-pointer"
+          className="w-24 h-24 rounded-full mr-5 mb-5 bg-black button"
           onClick={() => navigate("/explore-city")}
-        ></div>
+        >Start</div>
       </div>
     </div>
   );
