@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Cinzel';
+    src: url(./fonts/Cinzel/Cinzel-VariableFont_wght.ttf);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+#button-1{
+    padding: 15px 15px;
+    border: none;
+    border-radius: 40px;
+    font-size: 20px;
+    background-color: #00204D;
+    color: #E8E1CA;
+    font-family: 'Cinzel';
+}
+
+#button-1:hover{
+    background-color: #e8e1ca74;
+}
+
+#nav{
+    background-color: aqua;
+    margin-top: -50px;
+    padding: 10px 0;
+    background-color: #00204D;
+}

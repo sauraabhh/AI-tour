@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 //import VoiceRecognition from "./pages/VoiceRecognition";
 import Start from "./pages/Start";
