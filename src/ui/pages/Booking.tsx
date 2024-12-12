@@ -2,6 +2,10 @@
 import NavMain from "../Component/NavMain";
 import { useNavigate } from "react-router";
 import ToggleChatbotButton from "../Component/ToggleChatbotButton";
+import Button from "../Component/Button";
+import { FcPrevious } from "react-icons/fc";
+import { FcNext } from "react-icons/fc";
+
 
 const Booking = () => {
   const navigate = useNavigate();
@@ -12,8 +16,8 @@ const Booking = () => {
       <NavMain/>
 
       <h1>Your Booking</h1>
-      <button onClick={() => navigate("/plan-trip")}>Prev</button>
-       <button onClick={() => navigate("/help")}>Next</button>
+      <Button onClick={() => navigate("/plan-trip")}><FcPrevious/>Prev</Button>
+       <Button onClick={() => navigate("/help")}>Next<FcNext/></Button>
 
     </div>
     <ToggleChatbotButton/>

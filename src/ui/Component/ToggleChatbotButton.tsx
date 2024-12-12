@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Chatbot from './ChatBot';
+import Button from './Button';
 
 function ToggleChatbotButton() {
     const [showChatbot, setShowChatbot] = useState(false);
@@ -10,9 +11,9 @@ function ToggleChatbotButton() {
 
     return (
         <div>
-            <button onClick={handleClick}>
-                {showChatbot ? 'Hide Chatbot' : 'Show Chatbot'}
-            </button>
+            <Button onClick={handleClick}>
+                {showChatbot ? 'Chatbot' : 'Chatbot'}
+            </Button>
             {showChatbot && <Chatbot />}
         </div>
     );

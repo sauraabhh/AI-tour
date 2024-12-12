@@ -1,0 +1,18 @@
+.button {
+    background-color: #f0f0f0e0; /* Light gray background */
+    border: 1px solid #ccccccda; /* Light gray border */
+    border-radius: 90px; /* Rounded corners */
+    color: #333; /* Dark gray text */
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #e0e0e0; /* Slightly darker gray on hover */
+    border-color: #bbb; /* Slightly darker border on hover */
+  }

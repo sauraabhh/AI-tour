@@ -7,6 +7,10 @@ import Adventures from '../Component/Adventures';
 import NavMain from '../Component/NavMain';
 import { useNavigate } from 'react-router';
 import ToggleChatbotButton from '../Component/ToggleChatbotButton';
+import { FcPrevious } from "react-icons/fc";
+import { FcNext } from "react-icons/fc";
+import Button from '../Component/Button';
+
 
 function ExploreCity() {
     const [currentPage, setCurrentPage] = useState<string>('page1');
@@ -35,8 +39,8 @@ function ExploreCity() {
             <div>
                 {renderPage()}
             </div>
-            <button onClick={() => navigate("/")}>Prev</button>
-            <button onClick={() => navigate("/plan-trip")}>Next</button>
+            <Button onClick={() => navigate("/")}><FcPrevious/>Prev</Button>
+            <Button onClick={() => navigate("/plan-trip")}>Next<FcNext/></Button>
         </div>
         <ToggleChatbotButton/>
         </div>  

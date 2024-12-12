@@ -69,6 +69,7 @@ body {
     overflow: hidden;
     text-align: center;
     position: relative;
+    height: 60vh;
   }
   
   .card img {
@@ -112,4 +113,7 @@ body {
   
   .nav-arrows a:hover {
     color: #1a4566;
+  }
+  img{
+    height: 40vh;
   }

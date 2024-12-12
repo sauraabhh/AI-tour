@@ -11,23 +11,31 @@
 }
 
 
-#button-1{
-    padding: 15px 15px;
-    border: none;
-    border-radius: 40px;
-    font-size: 20px;
-    background-color: #00204D;
-    color: #E8E1CA;
+#nav-1 h1{
+    font-size: 40px;
+    color: #00204D;
     font-family: 'Cinzel';
 }
 
-#button-1:hover{
-    background-color: #e8e1ca74;
+#nav{
+    margin-top: -50px;
+    padding: 10px 25px;
 }
 
-#nav{
-    background-color: aqua;
-    margin-top: -50px;
-    padding: 10px 0;
-    background-color: #00204D;
+#nav-button{
+    display: flex;
+    gap: 20px;
+}
+
+#button-1{
+    padding: 10px 15px;
+    border: none;
+    background-color: F8F8F8;
+    border-radius: 15px;
+    font-size: 15px;
+}
+
+#button-1:hover{
+    background-color: #00204d95;
+    color: white;
 }
