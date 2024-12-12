@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'Cinzel';
+  src: url(./fonts/Cinzel/Cinzel-VariableFont_wght.ttf);
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.about-container {
+  /* background-color: red; */
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#left-about{
+  /* background-color: blue; */
+  height: 70vh;
+  width: 50%;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+#right-about{
+  /* background-color:yellow; */
+  height: 70vh;
+  width: 50%;
+}
+
+.cards{
+  height: 36vh;
+  background-color: green;
+  width: 18vw;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+#cards{
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+
+}
+
+#card{
+  height: 36vh;
+  position: relative;
+  background-color: burlywood;
+  width: 18vw;
+  margin-left: 250px;
+  margin-top: -70px;
+  z-index: 3;
+  overflow: hidden;
+  border-radius: 50px;
+}
+
+#card-2{
+  position: relative;
+  z-index: 4;
+  overflow: hidden;
+}
+
+#right-about h1{
+  font-size: 18px;
+}
+img{
+  object-fit: center;
+  object-position: center;
+}
+
