@@ -18,7 +18,7 @@ const Qr = () => {
             alt="VR 1"
           />
           <img
-            src="src\\ui\\images\\image.png"
+            src="src\\ui\\images\\Qr.png"
             alt="QR Code"
             className="qr-code"
           />
