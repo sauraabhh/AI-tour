@@ -1,0 +1,119 @@
+/* Body styling for layout */
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #0b2438;
+    padding: 15px 0;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+  }
+  
+  .navbar a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Main Section */
+  .main-section {
+    background-color: #e8e3da;
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  .crumpled-effect {
+    background: url("../images/taaj.png") no-repeat center center;
+    background-size: cover;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .crumpled-effect h1 {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .crumpled-effect p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Card Section */
+  .cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 0;
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    height: 60vh;
+  }
+  
+  .card img {
+    width: 100%;
+    border-bottom: 5px solid #ccc;
+  }
+  
+  .card .content {
+    padding: 20px;
+  }
+  
+  .card .content h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  
+  .card .content p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+  }
+  
+  /* Navigation Arrows */
+  .nav-arrows {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 40px;
+  }
+  
+  .nav-arrows a {
+    font-size: 1.5rem;
+    color: #0b2438;
+    text-decoration: none;
+  }
+  
+  .nav-arrows a:hover {
+    color: #1a4566;
+  }
+  img{
+    height: 40vh;
+  }

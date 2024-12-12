@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#mainpage{
+    background-color: red;
+    height: 100vh;
+    width: 100vw;
+}
+
+#Start{
+    height: 100vh;
+    width: 100vw;
+    background-image: url(../images/taaj.png);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    padding-right: 100px;
+    padding-bottom: 50px;
+}

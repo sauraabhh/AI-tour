@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Cinzel';
+  src: url(./fonts/Cinzel/Cinzel-VariableFont_wght.ttf);
+}
+.about image{
+  background-color: red;
+  height: 60vh;
+}
+
+.about-content{
+  background-color: blue;
+}
