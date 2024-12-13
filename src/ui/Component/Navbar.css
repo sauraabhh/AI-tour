@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Cinzel';
+    src: url(./fonts/Cinzel/Cinzel-VariableFont_wght.ttf);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#nav2{
+    /* background-color: #00204dda; */
+    padding: 10px 0;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    padding-bottom: 10px;
+    margin-top: -15px;
+}
+
+#button-2{
+    border: none;
+    color: black ;
+    background-color: #F8F8F8;
+    /* background-color: #00204d57; */
+    padding: 12px 18px;
+    border-radius: 20px;
+}
+
+#button-2:hover{
+    border-bottom: 1px solid black;
+}
