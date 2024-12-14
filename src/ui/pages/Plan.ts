@@ -15,19 +15,18 @@ if (personsInput && increasePersonsButton && decreasePersonsButton) {
     });
 }
 
-// Number of Rooms
-const roomsInput = document.getElementById('no-of-rooms') as HTMLInputElement | null;
-const increaseRoomsButton = document.getElementById('increase-rooms') as HTMLButtonElement | null;
-const decreaseRoomsButton = document.getElementById('decrease-rooms') as HTMLButtonElement | null;
 
-if (roomsInput && increaseRoomsButton && decreaseRoomsButton) {
-    increaseRoomsButton.addEventListener('click', () => {
-        roomsInput.value = (parseInt(roomsInput.value) + 1).toString();
-    });
 
-    decreaseRoomsButton.addEventListener('click', () => {
-        if (parseInt(roomsInput.value) > 1) {
-            roomsInput.value = (parseInt(roomsInput.value) - 1).toString();
-        }
+const mainDiv = document.getElementById('mainDiv') as HTMLElement | null;
+const optionsDiv = document.getElementById('optionsDiv') as HTMLElement | null;
+
+if (mainDiv && optionsDiv) {
+    mainDiv.addEventListener('click', () => {
+        optionsDiv.style.display = optionsDiv.style.display === 'block' ? 'none' : 'block';
     });
+} else {
+    console.error("Either 'mainDiv' or 'optionsDiv' element is missing.");
 }
+
+
+

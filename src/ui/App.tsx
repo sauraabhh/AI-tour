@@ -9,6 +9,11 @@ import Booking from "./pages/Booking";
 import Help from "./pages/Help";
 import Language from "./pages/Language";
 import Qr from "./pages/Qr";
+import PlanInside from "./pages/PlanInside";
+import Hotel from "./Component/Hotel";
+import Restraunts from "./Component/Restraunts";
+import Spots from "./Component/Spots";;
+
 
 const App = () => {
   return (
@@ -24,6 +29,10 @@ const App = () => {
         <Route path="/booking" element={<Booking />} />
         <Route path="/help" element={<Help />} />
         <Route path="/language" element={<Language />} />
+        <Route path="/PlanInside" element={<PlanInside />} />
+        <Route path="/Hotel" element={<Hotel />} />
+        <Route path="/Restraunts" element={<Restraunts />} />
+        <Route path="/Spots" element={< Spots />} />
       </Routes>
     </div>
   );

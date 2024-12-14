@@ -2,10 +2,12 @@
 function Map() {
   
   return (
-    <div>Map
+    <div>
+      
+      Map
      
     </div>
   )
 }
 
-export default Map
+export default Map;

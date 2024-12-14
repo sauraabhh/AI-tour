@@ -1,37 +1,35 @@
 import "./InsideCity.css"; // Importing the CSS file
-import MapButton from "./MapButton";
+// import MapButton from "./MapButton";
+import { useNavigate } from 'react-router';
+
 
 function InsideCity() {
+  const navigate = useNavigate()
   return (
     <div className="inside-city-container">
       <h1>PLACES INSIDE CITY </h1>
-      <div id="city-cards">
+      <div onClick={() => navigate("/Hotel")}  id="city-cards">
         <div className="city-cards">
           <div id="place-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Red_Fort_in_Delhi_03-2016_img1.jpg" alt="" />  
+            <img src="https://media.gettyimages.com/id/1204811865/photo/beds-in-hotel-room-at-tourist-resort.jpg?s=612x612&w=0&k=20&c=OELpUtSrRnH1L6lX9vG3QmxdR8-p_bHWF51b1Dg4lxs=" alt="" />
           </div>
-          <h1>RED FORT</h1>
+          <h1>Hotels</h1>
         </div>
-        <div className="city-cards">
+        <div onClick={() => navigate("/Restraunts")}  className="city-cards">
           <div id="place-card">
-            <img src="https://imgs.search.brave.com/-A9e4lBiJANxnNjuYfKFj9WxV-vYHakPecWo91sh3J4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yZW5k/ZXIuZmluZWFydGFt/ZXJpY2EuY29tL2lt/YWdlcy9yZW5kZXJl/ZC9zZWFyY2gvcHJp/bnQvOC82L2JyZWFr/L2ltYWdlcy9hcnR3/b3JraW1hZ2VzL21l/ZGl1bS8yL3F1dHVi/LW1pbmFyLW11cmFs/aS1haXRoYWwtcGhv/dG9ncmFwaHkuanBn" alt="" />  
+            <img src="https://media.istockphoto.com/id/1062672350/photo/restaurant-patio-in-center-city-district-of-philadelphia-pennsylvania-usa.jpg?s=612x612&w=0&k=20&c=c-Ic4EbKk0pY9jDAzqPZpATRwnT5n5s1aQyZpWFMY7I=" alt="" />
           </div>
-          <h1>QUTUB MINAR</h1>
+          <h1>Restraunts</h1>
         </div>
-        <div className="city-cards">
+        <div onClick={() => navigate("/spots")}  className="city-cards">
           <div id="place-card">
-            <img src="https://t3.ftcdn.net/jpg/04/33/20/76/360_F_433207671_t6srTMIC3DdOnv5Wc1iL9SyoDn1fzGLj.jpg" alt="" />  
+            <img src="https://www.pandotrip.com/wp-content/uploads/2018/06/Plitvice-Lakes-National-Park-in-Croatia.jpg" alt="" />
           </div>
-          <h1>JAMA MASJID</h1>
+          <h1>Attraction Spot</h1>
         </div>
-        <div className="city-cards">
-          <div id="place-card">
-            <img src="https://www.iskconcolumbus.com/images/iskcon-columbus.jpg" alt="" />  
-          </div>
-          <h1>ISCKON TEMPLE</h1>
-        </div>
+        
       </div>
-      <  MapButton />
+      {/* <  MapButton /> */}
 
     </div>
   );
