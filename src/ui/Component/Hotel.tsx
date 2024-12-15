@@ -8,7 +8,7 @@ function Hotel() {
     area: '',
     max_price: '',
     star_rating: '',
-    preferred_facilities: ''
+    preferred_facilities: '',
   });
   const [hotels, setHotels] = useState([]);
   const [error, setError] = useState('');
@@ -18,12 +18,18 @@ function Hotel() {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleBook = (hotel) => {
+    const name = hotel.property_name || 'Hotel Name';
+    const price = hotel.average_price || 'N/A';
+    alert(`Booking Hotel: ${name} at ₹${price}`);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(''); // Reset any previous error message
     try {
       const response = await axios.get('http://localhost:5000/recommend/hotels', {
-        params: formData
+        params: formData,
       });
       setHotels(response.data);
     } catch (err) {
@@ -33,17 +39,13 @@ function Hotel() {
   };
 
   return (
-    <div  style={{ margin: "50px auto", maxWidth: "1200px" }} >
-        <NavMain/>
+    <div style={{ margin: '50px auto', maxWidth: '1200px' }}>
+      <NavMain />
       <h1>Recommend Hotels</h1>
-      
+
       {/* Form Section */}
-      <form onSubmit={handleSubmit} style={{ marginBottom: '20px', display:'flex', alignContent: 'center', flexWrap:'wrap' }}>
-        <div style={{
-            display: 'flex',
-            alignItems: 'start'
-            
-        }}>
+      <form onSubmit={handleSubmit} style={{ marginBottom: '20px', display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+        <div>
           <label>
             City:
             <input
@@ -52,7 +54,7 @@ function Hotel() {
               value={formData.city}
               onChange={handleChange}
               required
-              style={{ marginLeft: '10px', marginBottom: '10px' }}
+              style={{ marginLeft: '10px' }}
             />
           </label>
         </div>
@@ -65,7 +67,7 @@ function Hotel() {
               value={formData.area}
               onChange={handleChange}
               required
-              style={{ marginLeft: '10px', marginBottom: '10px' }}
+              style={{ marginLeft: '10px' }}
             />
           </label>
         </div>
@@ -78,7 +80,7 @@ function Hotel() {
               value={formData.max_price}
               onChange={handleChange}
               required
-              style={{ marginLeft: '10px', marginBottom: '10px' }}
+              style={{ marginLeft: '10px' }}
             />
           </label>
         </div>
@@ -93,7 +95,7 @@ function Hotel() {
               min="1"
               max="5"
               required
-              style={{ marginLeft: '10px', marginBottom: '10px' }}
+              style={{ marginLeft: '10px' }}
             />
           </label>
         </div>
@@ -105,11 +107,13 @@ function Hotel() {
               name="preferred_facilities"
               value={formData.preferred_facilities}
               onChange={handleChange}
-              style={{ marginLeft: '10px', marginBottom: '10px' }}
+              style={{ marginLeft: '10px' }}
             />
           </label>
         </div>
-        <button type="submit" style={{ marginTop: '10px' }}>Recommend Hotels</button>
+        <button type="submit" style={{ marginTop: '10px' }}>
+          Recommend Hotels
+        </button>
       </form>
 
       {/* Error Message */}
@@ -126,31 +130,36 @@ function Hotel() {
                 borderRadius: '8px',
                 padding: '16px',
                 maxWidth: '300px',
-                backgroundColor: '#f9f9f9'
+                backgroundColor: '#f9f9f9',
               }}
             >
               <h2 style={{ fontSize: '18px', marginBottom: '10px' }}>
-                {hotel.property_name}
+                {hotel.property_name || 'Hotel name not available'}
               </h2>
               <p>
-                <strong>Address:</strong> {hotel.address}
+                <strong>Address:</strong> {hotel.address || 'Address not available'}
               </p>
               <p>
-                <strong>City:</strong> {hotel.city}
+                <strong>City:</strong> {hotel.city || 'City not available'}
               </p>
               <p>
-                <strong>Price:</strong> ₹{hotel.average_price}
+                <strong>Price:</strong> ₹{hotel.average_price || 'N/A'}
               </p>
               <p>
-                <strong>Star Rating:</strong> {hotel.hotel_star_rating} ⭐
+                <strong>Star Rating:</strong> {hotel.hotel_star_rating || 'N/A'} ⭐
               </p>
               <p>
-                <strong>Type:</strong> {hotel.property_type}
+                <strong>Type:</strong> {hotel.property_type || 'Type not available'}
               </p>
+              {hotel.average_price && (
+                <button onClick={() => handleBook(hotel)}>
+                  Book for ₹{hotel.average_price}
+                </button>
+              )}
             </div>
           ))
         ) : (
-          <p>No recommendations available. Please fill out the form and click "Recommend Hotels".</p>
+          <p>No hotel recommendations available. Please fill out the form and click "Recommend Hotels".</p>
         )}
       </div>
     </div>

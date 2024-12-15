@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import NavMain from '../Component/NavMain';
 
-function Plantrip() {
+function ItineraryPage() {
   const [formData, setFormData] = useState({
     city: '',
-    duration: 1,
     budget: '',
-    accomodation: 30,
-    meal: 30,
-    attraction: 40,
+    duration: '',
+    accomodation: '',
+    meal: '',
+    attraction: '',
     hotel_star: '',
     hotel_facilities: '',
     cuisine: '',
@@ -24,30 +24,38 @@ function Plantrip() {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleBook = (item, type) => {
+    if (!item) {
+      alert('Invalid item selected for booking.');
+      return;
+    }
+  
+    const name =
+      item.property_name || // For hotels
+      item['Restaurant Name'] || // For restaurants
+      item['Name'] || // For attractions
+      'Unknown';
+  
+    const price =
+      item.average_price || // For hotels
+      item['Average Price'] || // For restaurants
+      item['Entrance Fee in INR'] || // For attractions
+      'Not available';
+  
+    alert(`Booking ${type}: ${name} at ₹${price}`);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     try {
-      const {
-        city,
-        budget,
-        duration,
-        accomodation,
-        meal,
-        attraction,
-        hotel_star,
-        hotel_facilities,
-        cuisine,
-        attraction_type,
-      } = formData;
+      const { city, budget, duration, accomodation, meal, attraction, hotel_star, hotel_facilities, cuisine, attraction_type } = formData;
 
-      // Calculate daily budgets
       const dailyBudget = budget / duration;
       const hotelBudget = (dailyBudget * accomodation) / 100;
       const mealBudget = (dailyBudget * meal) / 100;
       const attractionBudget = (dailyBudget * attraction) / 100;
 
-      // Fetch recommendations from Flask API
       const hotelResponse = await axios.get('http://localhost:5000/recommend/hotels', {
         params: { city, max_price: hotelBudget, star_rating: hotel_star, preferred_facilities: hotel_facilities },
       });
@@ -57,45 +65,21 @@ function Plantrip() {
       });
 
       const attractionResponse = await axios.get('http://localhost:5000/recommend/attractions', {
-        params: { city, attraction_type, max_count: duration * 8 }, // Fetch more attractions
+        params: { city, attraction_type },
       });
 
-      // Organize attractions based on time of day
-      const categorizedAttractions = Array.from({ length: duration }, () => ({
-        Morning: [],
-        Afternoon: [],
-        Evening: [],
-        Night: [],
-      }));
-
-      attractionResponse.data.forEach((attraction) => {
-        const bestTime = attraction['Best Time to visit'];
-        if (bestTime) {
-          for (let day = 0; day < duration; day++) {
-            if (bestTime.includes('Morning')) categorizedAttractions[day].Morning.push(attraction);
-            if (bestTime.includes('Afternoon')) categorizedAttractions[day].Afternoon.push(attraction);
-            if (bestTime.includes('Evening')) categorizedAttractions[day].Evening.push(attraction);
-            if (bestTime.includes('Night')) categorizedAttractions[day].Night.push(attraction);
-          }
-        }
-      });
-
-      // Add fallback for missing time slots
-      categorizedAttractions.forEach((day) => {
-        day.Morning = day.Morning.length > 0 ? day.Morning.slice(0, 2) : ['Not available'];
-        day.Afternoon = day.Afternoon.length > 0 ? day.Afternoon.slice(0, 2) : ['Not available'];
-        day.Evening = day.Evening.length > 0 ? day.Evening.slice(0, 2) : ['Not available'];
-        day.Night = day.Night.length > 0 ? day.Night.slice(0, 2) : ['Not available'];
-      });
-
-      // Build itinerary
       const itineraryData = {
-        Hotels: hotelResponse.data.slice(0, 3), // Top 3 hotels
+        Hotels: hotelResponse.data.slice(0, 3),
         Restaurants: Array.from({ length: duration }, () => ({
-          Lunch: restaurantResponse.data.slice(0, 2), // 2 lunch options per day
-          Dinner: restaurantResponse.data.slice(2, 4), // 2 dinner options per day
+          Lunch: restaurantResponse.data.slice(0, 2),
+          Dinner: restaurantResponse.data.slice(2, 4),
         })),
-        Attractions: categorizedAttractions,
+        Attractions: Array.from({ length: duration }, () => ({
+          Morning: attractionResponse.data.slice(0, 2),
+          Afternoon: attractionResponse.data.slice(2, 4),
+          Evening: attractionResponse.data.slice(4, 6),
+          Night: attractionResponse.data.slice(6, 8),
+        })),
       };
 
       setItinerary(itineraryData);
@@ -108,7 +92,7 @@ function Plantrip() {
   return (
     <div style={{ margin: '50px auto', maxWidth: '1200px' }}>
       <NavMain />
-      <h1>Itinerary Planner</h1>
+      <h1>Create Your Itinerary</h1>
 
       {/* Form Section */}
       <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
@@ -120,55 +104,55 @@ function Plantrip() {
         </div>
         <div>
           <label>
+            Total Budget (₹):
+            <input type="number" name="budget" value={formData.budget} onChange={handleChange} required />
+          </label>
+        </div>
+        <div>
+          <label>
             Duration (days):
             <input type="number" name="duration" value={formData.duration} onChange={handleChange} required />
           </label>
         </div>
         <div>
           <label>
-            Budget (₹):
-            <input type="number" name="budget" value={formData.budget} onChange={handleChange} required />
-          </label>
-        </div>
-        <div>
-          <label>
-            Accommodation %:
+            Accommodation (% of budget):
             <input type="number" name="accomodation" value={formData.accomodation} onChange={handleChange} required />
           </label>
         </div>
         <div>
           <label>
-            Meals %:
+            Meals (% of budget):
             <input type="number" name="meal" value={formData.meal} onChange={handleChange} required />
           </label>
         </div>
         <div>
           <label>
-            Attractions %:
+            Attractions (% of budget):
             <input type="number" name="attraction" value={formData.attraction} onChange={handleChange} required />
           </label>
         </div>
         <div>
           <label>
             Hotel Star Rating:
-            <input type="text" name="hotel_star" value={formData.hotel_star} onChange={handleChange} />
+            <input type="number" name="hotel_star" value={formData.hotel_star} onChange={handleChange} />
           </label>
         </div>
         <div>
           <label>
-            Hotel Facilities:
+            Preferred Hotel Facilities:
             <input type="text" name="hotel_facilities" value={formData.hotel_facilities} onChange={handleChange} />
           </label>
         </div>
         <div>
           <label>
-            Cuisine:
+            Preferred Cuisine:
             <input type="text" name="cuisine" value={formData.cuisine} onChange={handleChange} />
           </label>
         </div>
         <div>
           <label>
-            Attraction Type:
+            Preferred Attraction Type:
             <input type="text" name="attraction_type" value={formData.attraction_type} onChange={handleChange} />
           </label>
         </div>
@@ -182,10 +166,16 @@ function Plantrip() {
       {itinerary && (
         <div>
           <h2>Your Itinerary</h2>
+
           <h3>Hotels:</h3>
           <ul>
             {itinerary.Hotels.map((hotel, index) => (
-              <li key={index}>{hotel.property_name} - ₹{hotel.average_price}</li>
+              <li key={index}>
+                {hotel.property_name} - ₹{hotel.average_price}
+                {hotel.average_price && (
+                  <button onClick={() => handleBook(hotel, 'Hotel')}>Book</button>
+                )}
+              </li>
             ))}
           </ul>
 
@@ -194,12 +184,24 @@ function Plantrip() {
             <div key={index}>
               <h4>Day {index + 1}:</h4>
               <p>
-                <strong>Lunch:</strong>{' '}
-                {day.Lunch.map((restaurant) => restaurant['Restaurant Name']).join(', ')}
+                Lunch: {day.Lunch.map((restaurant, idx) => (
+                  <span key={idx}>
+                    {restaurant['Restaurant Name']} - ₹{restaurant['Average Price']}
+                    {restaurant['Average Price'] && (
+                      <button onClick={() => handleBook(restaurant, 'Restaurant')}>Book</button>
+                    )}
+                  </span>
+                ))}
               </p>
               <p>
-                <strong>Dinner:</strong>{' '}
-                {day.Dinner.map((restaurant) => restaurant['Restaurant Name']).join(', ')}
+                Dinner: {day.Dinner.map((restaurant, idx) => (
+                  <span key={idx}>
+                    {restaurant['Restaurant Name']} - ₹{restaurant['Average Price']}
+                    {restaurant['Average Price'] && (
+                      <button onClick={() => handleBook(restaurant, 'Restaurant')}>Book</button>
+                    )}
+                  </span>
+                ))}
               </p>
             </div>
           ))}
@@ -208,22 +210,18 @@ function Plantrip() {
           {itinerary.Attractions.map((day, index) => (
             <div key={index}>
               <h4>Day {index + 1}:</h4>
-              <p>
-                <strong>Morning:</strong>{' '}
-                {day.Morning.map((attr) => (typeof attr === 'string' ? attr : attr['Name'])).join(', ')}
-              </p>
-              <p>
-                <strong>Afternoon:</strong>{' '}
-                {day.Afternoon.map((attr) => (typeof attr === 'string' ? attr : attr['Name'])).join(', ')}
-              </p>
-              <p>
-                <strong>Evening:</strong>{' '}
-                {day.Evening.map((attr) => (typeof attr === 'string' ? attr : attr['Name'])).join(', ')}
-              </p>
-              <p>
-                <strong>Night:</strong>{' '}
-                {day.Night.map((attr) => (typeof attr === 'string' ? attr : attr['Name'])).join(', ')}
-              </p>
+              {['Morning', 'Afternoon', 'Evening', 'Night'].map((time) => (
+                <p key={time}>
+                  {time}: {day[time].map((attr, idx) => (
+                    <span key={idx}>
+                      {attr['Name']} - ₹{attr['Entrance Fee in INR']}
+                      {attr['Entrance Fee in INR'] && (
+                        <button onClick={() => handleBook(attr, 'Attraction')}>Book</button>
+                      )}
+                    </span>
+                  ))}
+                </p>
+              ))}
             </div>
           ))}
         </div>
@@ -232,4 +230,4 @@ function Plantrip() {
   );
 }
 
-export default Plantrip;
+export default ItineraryPage;

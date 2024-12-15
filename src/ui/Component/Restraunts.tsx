@@ -7,7 +7,7 @@ function Restaurants() {
     city: '',
     area: '',
     cuisine: '',
-    max_price: ''
+    max_price: '',
   });
   const [restaurants, setRestaurants] = useState([]);
   const [error, setError] = useState('');
@@ -17,12 +17,18 @@ function Restaurants() {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleBook = (restaurant) => {
+    const name = restaurant['Restaurant Name'] || 'Restaurant Name';
+    const price = restaurant['Average Price'] || 'N/A';
+    alert(`Booking Restaurant: ${name} at ₹${price}`);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     try {
       const response = await axios.get('http://localhost:5000/recommend/restaurants', {
-        params: formData
+        params: formData,
       });
       setRestaurants(response.data);
     } catch (err) {
@@ -32,7 +38,7 @@ function Restaurants() {
   };
 
   return (
-    <div style={{ margin: "50px auto", maxWidth: "1200px" }}>
+    <div style={{ margin: '50px auto', maxWidth: '1200px' }}>
       <NavMain />
       <h1>Recommend Restaurants</h1>
 
@@ -59,7 +65,13 @@ function Restaurants() {
         <div>
           <label>
             Max Price:
-            <input type="number" name="max_price" value={formData.max_price} onChange={handleChange} required />
+            <input
+              type="number"
+              name="max_price"
+              value={formData.max_price}
+              onChange={handleChange}
+              required
+            />
           </label>
         </div>
         <button type="submit">Recommend Restaurants</button>
@@ -70,21 +82,38 @@ function Restaurants() {
 
       {/* Restaurants Display Section */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
-      {restaurants.length > 0 ? (
-  restaurants.map((restaurant, index) => (
-    <div key={index} style={{ border: '1px solid #ccc', padding: '16px', maxWidth: '300px' }}>
-      <h2>{restaurant['Restaurant Name'] || 'Restaurant name not available'}</h2>
-      <p><strong>Area:</strong> {restaurant['Area'] || 'Area not available'}</p>
-      <p><strong>Cuisine:</strong> {restaurant['Cuisine'] || 'Cuisine not available'}</p>
-      <p><strong>Price:</strong> ₹{restaurant['Average Price'] || 'N/A'}</p>
-      <p><strong>Pure Veg:</strong> {restaurant['Pure Veg'] === 'Yes' ? 'Yes' : 'No'}</p>
-      <p><strong>Rating:</strong> {restaurant['Rating'] || 'Rating not available'} ⭐</p>
-     
-    </div>
-  ))
-) : (
-  <p>No restaurant recommendations available. Please try again.</p>
-)}
+        {restaurants.length > 0 ? (
+          restaurants.map((restaurant, index) => (
+            <div
+              key={index}
+              style={{
+                border: '1px solid #ccc',
+                padding: '16px',
+                maxWidth: '300px',
+              }}
+            >
+              <h2>{restaurant['Restaurant Name'] || 'Restaurant name not available'}</h2>
+              <p><strong>Area:</strong> {restaurant['Area'] || 'Area not available'}</p>
+              <p><strong>Cuisine:</strong> {restaurant['Cuisine'] || 'Cuisine not available'}</p>
+              <p><strong>Price:</strong> ₹{restaurant['Average Price'] || 'N/A'}</p>
+              <p>
+                <strong>Pure Veg:</strong>{' '}
+                {restaurant['Pure Veg'] === 'Yes' ? 'Yes' : 'No'}
+              </p>
+              <p>
+                <strong>Rating:</strong>{' '}
+                {restaurant['Rating'] || 'Rating not available'} ⭐
+              </p>
+              {restaurant['Average Price'] && (
+                <button onClick={() => handleBook(restaurant)}>
+                  Book for ₹{restaurant['Average Price']}
+                </button>
+              )}
+            </div>
+          ))
+        ) : (
+          <p>No restaurant recommendations available. Please try again.</p>
+        )}
       </div>
     </div>
   );
