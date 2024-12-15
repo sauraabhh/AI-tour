@@ -1,0 +1,63 @@
+/* Container for images */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 30px;
+    position: relative;
+  }
+  
+  /* Style for the circular images */
+  .image-container img {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Center the QR code image */
+  .image-container img.qr-code {
+    width: 500px;
+    height: 500px;
+    border-radius: 0;
+    position: relative;
+  }
+  
+  /* Bottom buttons container */
+  .bottom-buttons {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100 100px;
+    gap: 10px;
+  }
+  
+  /* Align buttons evenly */
+  .bottom-buttons button {
+    /* flex: 1; */
+    text-align: center;
+    font-size: 16px;
+    /* padding: 10px 20px; */
+    cursor: pointer;
+  }
+  
+  /* Chatbot button styling */
+  .chatbot-button {
+    flex: 0;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .chatbot-button:hover {
+    background-color: #0056b3;
+  }
+  
